@@ -1,0 +1,40 @@
+{
+  "name": "postcss-inazuma",
+  "version": "0.0.0",
+  "description": "PostCSS plugin Converts px to vw based on media queries",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "viewport",
+    "px",
+    "vw"
+  ],
+  "author": "Vitalii Iurev <wwjurew@gmail.com>",
+  "license": "MIT",
+  "repository": "wwju/postcss-inazuma",
+  "bugs": {
+    "url": "https://github.com/wwju/postcss-inazuma/issues"
+  },
+  "homepage": "https://github.com/wwju/postcss-inazuma",
+  "dependencies": {
+    "postcss": "^6.0.16"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-postcss": "^2.0.2",
+    "jest": "^22.4.2"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss/es5",
+    "env": {
+      "jest": true
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
