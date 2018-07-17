@@ -1,13 +1,59 @@
-var postcss = require('postcss');
+const postcss = require('postcss');
 
-module.exports = postcss.plugin('postcss-inazuma', function (opts) {
-    opts = opts || {};
+const options = [
+    { min: 320, coeff: 1 },
+    { min: 480, coeff: 1.5 },
+    { min: 768, coeff: 1 },
+    { min: 1280, coeff: 0.94 },
+    { min: 1366, coeff: 1 },
+    { min: 1440, coeff: 1.05 },
+    { min: 1600, coeff: 1.171 },
+    { min: 1920, coeff: 1.4 }
+];
 
-    // Work with options here
+const processDecls = (decl, option) => {
+    if (!/\d+iz/.test(decl.value)) return;
+    const splitted = decl.value.split(/(\d+iz)/);
+    splitted.forEach((v, i) => {
+        if (/(\d+iz)/.exec(v)) {
+            const newValueInVw = parseInt(v, 10) / option.min *
+                100 *
+                option.coeff;
+            splitted[i] = `${newValueInVw}vw`;
+        }
+    });
+    const newValue = splitted.join('');
+    decl.cloneBefore({ value: newValue });
+    decl.remove();
+};
 
-    return function (root, result) {
+const processOneMediaRule = (rule, param) => {
+    const newRule = rule.cloneBefore({ params: param });
+    const regexp = /(min|max)-width: (\d+)px/;
+    const selectedParams = regexp.exec(param);
+    if (!selectedParams) return;
+    const prop = selectedParams[1];
+    const value = parseInt(selectedParams[2], 10);
+    const option = options.filter((o) => {
+        return (Object.keys(o).indexOf(prop) !== -1) && (o[prop] === value);
+    })[0];
+    // if (!option) {
+    //     console.warn(`No coefficient for ${prop}: ${value} are given`);
+    // }
+    newRule.walkDecls(decl => processDecls(decl, option));
+};
 
-        // Transform CSS AST here
+const processAllMediaRules = (mediaRule) => {
+    mediaRule.params.split(/, ?/).forEach((mediaParam) => {
+        return processOneMediaRule(mediaRule, mediaParam);
+    });
+    mediaRule.remove();
+};
 
+module.exports = postcss.plugin('postcss-inazuma', () => {
+    // opts = opts || {};
+
+    return (root) => {
+        root.walkAtRules(processAllMediaRules);
     };
 });
