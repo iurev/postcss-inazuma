@@ -29,5 +29,5 @@ it('does something', () => {
     height: 100px;
 }
     `;
-    return run(css, expected, {});
+    return run(css, expected);
 });

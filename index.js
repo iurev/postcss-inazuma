@@ -1,6 +1,6 @@
 const postcss = require('postcss');
 
-const options = [
+const defaultOptions = [
     { min: 320, coeff: 1 },
     { min: 480, coeff: 1.5 },
     { min: 768, coeff: 1 },
@@ -27,14 +27,14 @@ const processDecls = (decl, option) => {
     decl.remove();
 };
 
-const processOneMediaRule = (rule, param) => {
+const processOneMediaRule = (rule, param, opts) => {
     const newRule = rule.cloneBefore({ params: param });
     const regexp = /(min|max)-width: (\d+)px/;
     const selectedParams = regexp.exec(param);
     if (!selectedParams) return;
     const prop = selectedParams[1];
     const value = parseInt(selectedParams[2], 10);
-    const option = options.filter((o) => {
+    const option = opts.filter((o) => {
         return (Object.keys(o).indexOf(prop) !== -1) && (o[prop] === value);
     })[0];
     // if (!option) {
@@ -43,17 +43,15 @@ const processOneMediaRule = (rule, param) => {
     newRule.walkDecls(decl => processDecls(decl, option));
 };
 
-const processAllMediaRules = (mediaRule) => {
+const processAllMediaRules = (mediaRule, opts) => {
     mediaRule.params.split(/, ?/).forEach((mediaParam) => {
-        return processOneMediaRule(mediaRule, mediaParam);
+        return processOneMediaRule(mediaRule, mediaParam, opts);
     });
     mediaRule.remove();
 };
 
-module.exports = postcss.plugin('postcss-inazuma', () => {
-    // opts = opts || {};
-
+module.exports = postcss.plugin('postcss-inazuma', (opts = defaultOptions) => {
     return (root) => {
-        root.walkAtRules(processAllMediaRules);
+        root.walkAtRules(rule => processAllMediaRules(rule, opts));
     };
 });
