@@ -16,10 +16,18 @@ const processDecls = (decl, option) => {
     const splitted = decl.value.split(/(\d+iz)/);
     splitted.forEach((v, i) => {
         if (/(\d+iz)/.exec(v)) {
-            const newValueInVw = parseInt(v, 10) / option.min *
-                100 *
-                option.coeff;
-            splitted[i] = `${newValueInVw}vw`;
+            const convertTo = option.convertTo || 'vw';
+            let newValue;
+            if (convertTo === 'vw') {
+                const newValueInVw = parseInt(v, 10) / option.min *
+                    100 *
+                    option.coeff;
+                newValue = `${newValueInVw}vw`;
+            } else if (convertTo === 'px') {
+                const newValueInPx = parseInt(v, 10) * option.coeff;
+                newValue = `${newValueInPx}px`;
+            }
+            splitted[i] = newValue;
         }
     });
     const newValue = splitted.join('');

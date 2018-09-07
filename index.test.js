@@ -31,3 +31,31 @@ it('does something', () => {
     `;
     return run(css, expected);
 });
+
+
+it('does something', () => {
+    const opts = [
+        { min: 320, coeff: 1 },
+        { min: 768, coeff: 0.5, convertTo: 'px' }
+    ];
+    const css = `
+@media (min-width: 320px), (min-width: 768px) {
+    width: 10iz;
+    background-position: 10iz 10iz;
+    height: 100px;
+}
+    `;
+    const expected = `
+@media (min-width: 320px) {
+    width: 3.125vw;
+    background-position: 3.125vw 3.125vw;
+    height: 100px;
+}
+@media (min-width: 768px) {
+    width: 5px;
+    background-position: 5px 5px;
+    height: 100px;
+}
+    `;
+    return run(css, expected, opts);
+});
