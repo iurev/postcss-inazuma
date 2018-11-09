@@ -120,8 +120,8 @@ https://github.com/postcss/postcss-nested
 
 */
 
-    @media (--small) {
-        .awesomeTitle {
+    .awesomeTitle {
+        @media (--small) {
             font-size: 16px;
         }
     }
