@@ -1,9 +1,10 @@
 :root {
   --goldenRod: #EC9222;
   --wheat: #F1CA9B;
-  --sienna: #8A5538;
+  --sienna: #D94A42;
   --white: #FBFBFB;
   --darkGray: #A4A0A1;
+  --textFontFamily: 'Fira Sans', sans-serif;
 }
 
 @custom-media --small (max-width: 1024px);
@@ -15,7 +16,7 @@
   overflow: scroll;
   top: 0;
   left: 0;
-  padding: 50px 0;
+  padding-top: 100px;
   width: 100vw;
   height: 100vh;
   min-height: 200px;
@@ -37,8 +38,8 @@
 
 .source__close {
   position: fixed;
-  top: -20px;
-  right: -20px;
+  top: 20px;
+  right: 20px;
   color: var(--darkGray);
   padding: 10px;
   opacity: 0.9;
@@ -49,7 +50,9 @@
   }
 }
 
-/* .gist {
-  max-width: 90%;
-  margin: 0 auto;
-} */
+.source__more {
+  text-decoration: none;
+  color: var(--sienna);
+  padding: 10px;
+  font-family: var(--textFontFamily);
+}

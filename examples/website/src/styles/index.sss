@@ -4,17 +4,14 @@
   --sienna: #8A5538;
   --white: #FBFBFB;
   --darkGray: #A4A0A1;
-  --smallScreen: 720px;
-  --mediumScreen: 1024px;
-  --normalScreen: 1366px;
-  --bigScreen: 1920px;
   --titleFontFamily: 'Titan One', cursive;
+  --textFontFamily: 'Fira Sans', sans-serif;
 }
 
+/* Only THREE media queries are going to become EIGHT  */
 @custom-media --small (max-width: 1024px);
 @custom-media --normal (min-width: 1025px);
 @custom-media --huge (min-width: 1921px);
-
 
 body {
   background: var(--white);
@@ -23,36 +20,49 @@ body {
 
 header {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  min-height: 200px;
-  min-width: 320px;
-  overflow: hidden;
+
+  @media (--normal), (--huge) {
+    width: 100vw;
+    height: 100vh;
+    min-height: 200px;
+    min-width: 320px;
+    overflow: hidden;
+  }
 }
 
 .title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @media (--small) {
+    padding: 0 20px;
+  }
+
+  @media (--normal), (--huge) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .header__scissors {
   color: var(--darkGray);
-  font-size: 20px;
-  position: absolute;
-  top: -50px;
-  left: -120px;
+  @media (--normal), (--huge) {
+    font-size: 20px;
+    position: absolute;
+    top: -50px;
+    left: -120px;
+  }
 }
 
-.title__sub {
+.title__postcss {
   font-family: var(--titleFontFamily);
-  position: absolute;
-  top: -20px;
-  left: 0;
-  font-size: 20px;
-  color: var(--goldenRod);
-  opacity: 0.8;
+  color: var(--wheat);
+
+  @media (--normal), (--huge) {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    font-size: 20px;
+  }
 }
 
 .title__main {
@@ -61,6 +71,7 @@ header {
 
   a {
     color: var(--goldenRod);
+    text-decoration: none;
   }
 
   @media (--small), (--normal), (--huge) {
@@ -70,3 +81,8 @@ header {
   }
 }
 
+.title__description {
+  font-family: var(--textFontFamily);
+  color: var(--goldenRod);
+  opacity: 0.8;
+}

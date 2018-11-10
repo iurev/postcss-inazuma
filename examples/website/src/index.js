@@ -10,6 +10,9 @@ var __HIDDEN = '--hidden';
 window.app = window.app || {};
 var app = window.app;
 app.openSource = function(e) {
+  if (window.innerWidth <= 1024) {
+    return;
+  }
   e.preventDefault();
   document.getElementById(SOURCE).classList.remove(SOURCE + __HIDDEN);
 }
