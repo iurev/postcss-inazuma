@@ -3,8 +3,8 @@
 [PostCSS] plugin which converts `px` to `vw` (or anything else) based on coefficients and media queries.
 
 [PostCSS]: https://github.com/postcss/postcss
-[ci-img]:  https://travis-ci.org/wwju/postcss-inazuma.svg
-[ci]:      https://travis-ci.org/wwju/postcss-inazuma
+[ci-img]:  https://travis-ci.org/iurev/postcss-inazuma.svg
+[ci]:      https://travis-ci.org/iurev/postcss-inazuma
 
 <!-- TODO: https://www.npmjs.com/package/markdown-magic -->
 

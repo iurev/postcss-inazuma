@@ -12,11 +12,11 @@
   ],
   "author": "Vitalii Iurev <wwjurew@gmail.com>",
   "license": "MIT",
-  "repository": "wwju/postcss-inazuma",
+  "repository": "iurev/postcss-inazuma",
   "bugs": {
-    "url": "https://github.com/wwju/postcss-inazuma/issues"
+    "url": "https://github.com/iurev/postcss-inazuma/issues"
   },
-  "homepage": "https://github.com/wwju/postcss-inazuma",
+  "homepage": "https://github.com/iurev/postcss-inazuma",
   "dependencies": {
     "postcss": "^6.0.16"
   },
