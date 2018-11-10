@@ -1,8 +1,21 @@
-import './styles/fonts/index.css';
-import './styles/html.css';
+import './styles/html.sss';
 
-import './styles/index.css';
+import './styles/index.sss';
+import './styles/nav.sss';
+import './styles/source.sss';
 
-import { logSquare } from './scripts/logs';
+var SOURCE = 'source';
+var __HIDDEN = '--hidden';
 
-logSquare(3);
+window.app = window.app || {};
+var app = window.app;
+app.openSource = function(e) {
+  e.preventDefault();
+  document.getElementById(SOURCE).classList.remove(SOURCE + __HIDDEN);
+}
+
+app.closeSource = function(e) {
+  e.preventDefault();
+  document.getElementById(SOURCE).classList.add(SOURCE + __HIDDEN);
+}
+

@@ -4,7 +4,6 @@ const postcssConfig = './config/postcss/postcss.config.js';
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
@@ -23,9 +22,7 @@ console.log('NODE_ENV:', process.env.NODE_ENV);
 const config = {
   context: projectDir + '/src',
   entry: {
-    'index': './index.js',
-    // If you want to add more entry points, just pass the path to your JS file
-    // 'my-page': './pages/my-page/index.js',
+    'index': './index.js'
   },
   output: {
     filename: isDev ? '[name].js' : '[name].[chunkhash].js',
@@ -34,12 +31,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        use: [{ loader: 'babel-loader', options: { cacheDirectory: true } }],
-        exclude: /node_modules(?!\/webpack-dev-server)/,
-      },
-      {
-        test: /\.css$/,
+        test: /\.sss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -59,7 +51,6 @@ const config = {
           ],
         })
       },
-      { test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)$/, loader: 'file-loader?limit=100000&name=./media/[name].[ext]' },
       {
         test: /\.(html)$/,
         use: {
@@ -83,29 +74,6 @@ const config = {
     new HtmlWebpackPlugin({
       chunks: ['index'],
       template: './index.html',
-    }),
-
-    // If you want to add more pages, just pass the path to your .html file
-    // new HtmlWebpackPlugin({
-    //     chunks: ['my-page'], // JS file that the page is reading the assets.
-    //     template: './pages/my-page/index.html',
-    // }),
-
-    // Multiple pages can read from the same JS entry point
-    // new HtmlWebpackPlugin({
-    //     chunks: ['index'], // read from the same entry point as `index.html`
-    //     template: './pages/my-page/about.html',
-    // }),
-
-    new LodashModuleReplacementPlugin,
-    new UglifyJSPlugin({
-      mangle: true,
-      compress: {
-        warnings: false,
-        drop_console: !isDev,
-        drop_debugger: !isDev,
-        screw_ie8: true,
-      },
     }),
     new BrowserSyncPlugin({
       host: 'localhost',

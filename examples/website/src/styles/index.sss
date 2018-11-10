@@ -1,0 +1,72 @@
+:root {
+  --goldenRod: #EC9222;
+  --wheat: #F1CA9B;
+  --sienna: #8A5538;
+  --white: #FBFBFB;
+  --darkGray: #A4A0A1;
+  --smallScreen: 720px;
+  --mediumScreen: 1024px;
+  --normalScreen: 1366px;
+  --bigScreen: 1920px;
+  --titleFontFamily: 'Titan One', cursive;
+}
+
+@custom-media --small (max-width: 1024px);
+@custom-media --normal (min-width: 1025px);
+@custom-media --huge (min-width: 1921px);
+
+
+body {
+  background: var(--white);
+  margin: 0;
+}
+
+header {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 200px;
+  min-width: 320px;
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header__scissors {
+  color: var(--darkGray);
+  font-size: 20px;
+  position: absolute;
+  top: -50px;
+  left: -120px;
+}
+
+.title__sub {
+  font-family: var(--titleFontFamily);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 20px;
+  color: var(--goldenRod);
+  opacity: 0.8;
+}
+
+.title__main {
+  font-family: var(--titleFontFamily);
+  margin: 0;
+
+  a {
+    color: var(--goldenRod);
+  }
+
+  @media (--small), (--normal), (--huge) {
+    --height: 60px;
+    font-size: var(--height);
+    line-height: var(--height);
+  }
+}
+
