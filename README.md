@@ -1,4 +1,4 @@
-# PostCSS Inazuma [![Build Status][ci-img]][ci]
+# (In development) PostCSS Inazuma [![Build Status][ci-img]][ci]
 
 [PostCSS] plugin which converts `px` to `vw` (or anything else) based on coefficients and media queries.
 
