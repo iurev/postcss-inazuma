@@ -1,0 +1,47 @@
+{
+  "name": "essencial-webpack-boilerplate",
+  "version": "2.2.1",
+  "description": "Minimal starter boilerplate with WebPack 3, PostCSS 6, Babel and Jest ready to go",
+  "main": "./src/index.js",
+  "repository": {
+    "url": "https://github.com/sandrina-p/essencial-webpack-boilerplate.git",
+    "type": "git"
+  },
+  "author": "Sandrina Pereira <sandrin4pereir4@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js -p --optimize-minimize",
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./config/webpack.config.js",
+    "test": "cross-env NODE_ENV=test node --harmony_proxies node_modules/jest/bin/jest.js --coverage",
+    "test:node7": "cross-env NODE_ENV=test node --harmony node_modules/jest/bin/jest.js --coverage"
+  },
+  "devDependencies": {
+    "ajv-keywords": "^2.1.1",
+    "browser-sync": "^2.18.13",
+    "browser-sync-webpack-plugin": "^1.2.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "cross-env": "^5.1.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "postcss": "^6.0.14",
+    "postcss-css-variables": "^0.11.0",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.8",
+    "postcss-mixins": "^6.2.0",
+    "postcss-nested": "^2.1.2",
+    "style-loader": "^0.19.0",
+    "stylelint": "8.x.x",
+    "stylelint-config-standard": "^17.0.0",
+    "webpack": "3.8.1",
+    "webpack-dev-server": "2.9.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "postcss-calc": "^7.0.1",
+    "postcss-media-variables": "^2.0.1"
+  }
+}

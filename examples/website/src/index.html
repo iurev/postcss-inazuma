@@ -1,0 +1,65 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>inazuma – postcss plugin</title>
+  <meta name="description" content="A postcss plugin which generates additional media queries and scales them"/>
+  <meta name="keywords" content="postcss,media queries,scale,px,vw">
+  <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous"
+  >
+</head>
+<body class="body">
+  <nav class="nav">
+    <a class="nav__link" href="https://github.com/iurev/postcss-inazuma">
+      <i class="fab fa-github-alt"></i>
+      readme.md
+    </a>
+    <a
+      class="nav__link"
+      onclick="window.app.openSource(event)"
+      href="https://github.com/iurev/postcss-inazuma"
+    >
+      <i class="fas fa-code nav__scissors"></i>
+      This page stylesheet
+    </a>
+  </nav>
+  <main>
+    <header class="header">
+      <div class="title">
+        <span class="title__postcss">postcss</span>
+        <h1 class="title__main">
+          <a href="https://github.com/iurev/postcss-inazuma">
+            inazuma
+          </a>
+        </h1>
+        <h2 class="description">
+          Generates additional media queries and scales them
+        </h2>
+        <i class="fas fa-cut scissors"></i>
+      </div>
+    </header>
+    <section
+      id="source"
+      class="source source--hidden"
+      onclick="window.app.closeSource(event)"
+    >
+      <div class="source__content" onclick="event.stopPropagation()">
+        <i class="fas fa-times source__close" onclick="window.app.closeSource(event)"></i>
+        <script src="https://gist.github.com/leolana/a27d5e6b4f395504adec10353a9e9837.js"></script>
+        <a
+          class="source__more"
+          href="https://github.com/iurev/postcss-inazuma"
+        >
+          <i class="fas fa-code"></i>
+          more examples...
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
