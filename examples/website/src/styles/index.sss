@@ -1,7 +1,6 @@
 :root {
   --goldenRod: #EC9222;
   --wheat: #F1CA9B;
-  --sienna: #8A5538;
   --white: #FBFBFB;
   --darkGray: #A4A0A1;
   --titleFontFamily: 'Titan One', cursive;
@@ -13,12 +12,12 @@
 @custom-media --normal (min-width: 1025px);
 @custom-media --huge (min-width: 1921px);
 
-body {
+.body {
   background: var(--white);
   margin: 0;
 }
 
-header {
+.header {
   position: relative;
 
   @media (--normal), (--huge) {
@@ -43,7 +42,7 @@ header {
   }
 }
 
-.title__scissors {
+.scissors {
   color: var(--darkGray);
   @media (--small) {
     display: none;
@@ -85,7 +84,7 @@ header {
   }
 }
 
-.title__description {
+.description {
   font-family: var(--textFontFamily);
   color: var(--goldenRod);
   opacity: 0.8;
