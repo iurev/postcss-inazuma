@@ -1,6 +1,6 @@
 # PostCSS Inazuma [![Build Status][ci-img]][ci]
 
-[PostCSS] plugin which **converts `px` to `vw` (or anything else) based on coefficients and media queries.**
+[PostCSS] plugin which converts `px` to `vw` (or anything else) based on coefficients and media queries.
 
 [PostCSS]: https://github.com/postcss/postcss
 [ci-img]:  https://travis-ci.org/wwju/postcss-inazuma.svg
@@ -31,7 +31,7 @@
 ## What plugin does well
 
 1. Converts from `px` (or anything) to `vw` (or anything)
-2. Uses coefficients for each media query
+2. Multiplies each value on a custom coefficient
 3. Splits media queries
 4. Allows you to customize almost everything in .css and build files
 
