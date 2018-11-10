@@ -43,13 +43,17 @@ header {
   }
 }
 
-.header__scissors {
+.title__scissors {
   color: var(--darkGray);
+  @media (--small) {
+    display: none;
+  }
   @media (--normal), (--huge) {
-    font-size: 20px;
     position: absolute;
-    top: -50px;
-    left: -120px;
+    font-size: 40px;
+    top: -60px;
+    right: -50px;
+    transform: rotate(-145deg);
   }
 }
 
